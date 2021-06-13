@@ -19,28 +19,28 @@ class RazaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_raza)
 
-        getData()
+        getData(intent.getStringExtra("raza"))
     }
 
-    private fun getData() {
+    private fun getData(raza: String?) {
         val db = Firebase.firestore
         db.collection("razas")
-            .document("pug")
+            .whereEqualTo("name", raza)
             .get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d(tag, "DocumentSnapshot data: ${document.data}")
-                    val raza = document.toObject(Raza::class.java)
-                    raza?.let {
-                        raza.id = document.id
+            .addOnSuccessListener { documents ->
+                if (documents.size() > 0) {
+                    Log.d(tag, "DocumentSnapshot data: ${documents.documents[0].data}")
+                    val razaDoc = documents.documents[0].toObject(Raza::class.java)
+                    razaDoc?.let {
+                        razaDoc.id = documents.documents[0].id
 
                         Glide
                             .with(this)
-                            .load(raza.img)
+                            .load(razaDoc.img)
                             .into(razaImage)
 
-                        razaText.text = raza.id!!.toUpperCase(Locale.getDefault())
-                        descText.text = raza.desc
+                        razaText.text = razaDoc.name!!.toUpperCase(Locale.getDefault())
+                        descText.text = razaDoc.desc
                     }
 
                 } else {
