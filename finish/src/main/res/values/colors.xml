@@ -26,4 +26,5 @@
     <color name="gray">#EAEAEA</color>
     <color name="pink">#E91E63</color>
     <color name="blue">#304EF1</color>
+    <color name="transparent">#00000000</color>
 </resources>

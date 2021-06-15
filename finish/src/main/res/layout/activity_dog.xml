@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.DogActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/purple_500"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:contentDescription="@string/content_desc"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_marginStart="20dp"
+            android:layout_toStartOf="@id/checkButton"
+            android:layout_toEndOf="@+id/backButton"
+            android:gravity="start|center"
+            android:text="@string/add_label"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:id="@+id/checkButton"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="@string/content_desc"
+            android:src="@drawable/ic_check"
+            app:tint="@color/white" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_200"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/razaPerro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/nombreLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/nombre_del_perro"
+            android:padding="15dp"
+            app:startIconContentDescription="@string/content_desc"
+            app:startIconDrawable="@drawable/ic_footprint_dog">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nombreInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dateLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/fecha_de_rescate"
+        android:padding="15dp"
+        app:startIconContentDescription="@string/content_desc"
+        app:startIconDrawable="@drawable/ic_calendar_today">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/dateInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:inputType="datetime" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pesoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/peso"
+        android:padding="15dp"
+        app:startIconContentDescription="@string/content_desc"
+        app:startIconDrawable="@drawable/ic_vector_kilogram_weight">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pesoInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:inputType="datetime" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="55dp"
+            android:text="@string/sexo"
+            android:textSize="16sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:checkedButton="@+id/radio_button_1"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:contentDescription="@string/content_desc" />
+
+            <RadioButton
+                android:id="@+id/maleOption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/macho" />
+
+            <RadioButton
+                android:id="@+id/femaleOption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/hembra" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package org.tensorflow.lite.examples.classification.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -22,9 +23,14 @@ class RazaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_raza)
-
+        val raza = intent.getStringExtra("raza")
         db = Firebase.firestore
-        getData(intent.getStringExtra("raza"))
+        getData(raza)
+        addPerro.setOnClickListener {
+            val intent = Intent(this, DogActivity::class.java)
+            intent.putExtra("raza", raza)
+            startActivity(intent)
+        }
     }
 
     private fun getData(raza: String?) {

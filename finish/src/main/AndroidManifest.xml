@@ -35,6 +35,8 @@
         android:theme="@style/Theme.TFLClassify"
         tools:ignore="AllowBackup">
 
+        <activity android:name=".activities.DogActivity" />
+
         <activity
             android:name=".activities.RazaActivity"
             android:launchMode="singleTop" />
