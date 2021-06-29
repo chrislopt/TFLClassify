@@ -34,6 +34,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TFLClassify"
         tools:ignore="AllowBackup">
+
+        <activity android:name=".activities.DogActivity" />
+
+        <activity
+            android:name=".activities.RazaActivity"
+            android:launchMode="singleTop" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,6 +48,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
