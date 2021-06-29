@@ -3,14 +3,21 @@ package org.tensorflow.lite.examples.classification.activities
 import android.app.DatePickerDialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.widget.EditText
+import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_dog.*
 import org.tensorflow.lite.examples.classification.R
+import org.tensorflow.lite.examples.classification.model.Dog
 import java.text.SimpleDateFormat
 import java.util.*
 
 class DogActivity : AppCompatActivity() {
+
+    val db=FirebaseFirestore.getInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
 
@@ -22,7 +29,28 @@ class DogActivity : AppCompatActivity() {
         val dateInput=findViewById<EditText>(R.id.dateInput)
         
         initControls(dateInput)
+
+
+        val selectedRadioButtonId: Int = radioGroup.checkedRadioButtonId
+       val selectedRadioButton = findViewById<RadioButton>(selectedRadioButtonId)
+        val string: String = selectedRadioButton.text.toString()
+
+        checkButton.setOnClickListener{
+            db.collection("Perros").add(Dog(name = nombreInput.text.toString(),fechaRescate = firebase.firestore.Timestamp.fromDate(Date()),peso = pesoInput.text.toString(),sexo =string )).addOnSuccessListener { newDoc ->
+                Log.d(
+                    "resultado","EXITO!"
+                )
+
+            }
+                .addOnFailureListener { e ->
+                    Log.d(
+                        "resultado","FRACASO!"
+                    )
+                }
+        }
+
     }
+
 
     private fun initControls(dateInput:EditText) {
         val myCalendar = Calendar.getInstance()
