@@ -58,6 +58,7 @@ typealias RecognitionListener = (recognition: List<Recognition>) -> Unit
 /**
  * Main entry point into TensorFlow Lite Classifier
  */
+
 class MainActivity : AppCompatActivity() {
 
     // CameraX variables

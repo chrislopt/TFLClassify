@@ -3,6 +3,7 @@ package org.tensorflow.lite.examples.classification.activities
 import android.app.DatePickerDialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_dog.*
 import org.tensorflow.lite.examples.classification.R
@@ -11,15 +12,19 @@ import java.util.*
 
 class DogActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dog)
 
         val razaLabel = "Raza 🐶: " + intent.getStringExtra("raza")
         razaPerro.text = razaLabel
-        initControls()
+        val dateInput=findViewById<EditText>(R.id.dateInput)
+        
+        initControls(dateInput)
     }
 
-    private fun initControls() {
+    private fun initControls(dateInput:EditText) {
         val myCalendar = Calendar.getInstance()
 
         val myFormat = "dd/MM/yy"
