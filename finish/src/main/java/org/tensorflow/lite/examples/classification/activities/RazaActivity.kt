@@ -19,6 +19,7 @@ class RazaActivity : AppCompatActivity() {
 
     private val tag = "RazaActivity"
     private lateinit var db: FirebaseFirestore
+    private var idRaza: String =""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,7 @@ class RazaActivity : AppCompatActivity() {
         addPerro.setOnClickListener {
             val intent = Intent(this, DogActivity::class.java)
             intent.putExtra("raza", raza)
+            intent.putExtra("idRaza", idRaza);
             startActivity(intent)
         }
     }
@@ -43,7 +45,7 @@ class RazaActivity : AppCompatActivity() {
                     val razaDoc = documents.documents[0].toObject(Raza::class.java)
                     razaDoc?.let {
                         razaDoc.id = documents.documents[0].id
-
+                        idRaza = razaDoc.id.toString()
                         Glide
                             .with(this)
                             .load(razaDoc.img)

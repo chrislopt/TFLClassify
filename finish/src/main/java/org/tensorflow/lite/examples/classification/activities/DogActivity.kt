@@ -3,10 +3,11 @@ package org.tensorflow.lite.examples.classification.activities
 import android.app.DatePickerDialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import android.widget.EditText
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_dog.*
 import org.tensorflow.lite.examples.classification.R
@@ -31,22 +32,29 @@ class DogActivity : AppCompatActivity() {
         initControls(dateInput)
 
 
-        val selectedRadioButtonId: Int = radioGroup.checkedRadioButtonId
-       val selectedRadioButton = findViewById<RadioButton>(selectedRadioButtonId)
-        val string: String = selectedRadioButton.text.toString()
+        //val selectedRadioButtonId: Int = radioGroup.checkedRadioButtonId
+       //val selectedRadioButton = findViewById<RadioButton>(selectedRadioButtonId)
+        //val string: String = selectedRadioButton.text.toString()
 
-        checkButton.setOnClickListener{
-            db.collection("Perros").add(Dog(name = nombreInput.text.toString(),fechaRescate = firebase.firestore.Timestamp.fromDate(Date()),peso = pesoInput.text.toString(),sexo =string )).addOnSuccessListener { newDoc ->
-                Log.d(
-                    "resultado","EXITO!"
-                )
 
+        checkButton.setOnClickListener {
+            //TODO: NOT QUITE WORKING
+            var optionGender: String = "Macho"
+
+            if (femaleOption.isSelected && !maleOption.isSelected) {
+                optionGender = "Hembra";
+            } else if (!femaleOption.isSelected && maleOption.isSelected) {
+                optionGender = "Macho"
+            };
+
+            db.collection("Perros").add(Dog(idRaza = intent.getStringExtra("idRaza") ,name = nombreInput.text.toString(),fechaRescate = Timestamp(Date()),peso = pesoInput.text.toString(), sexo = optionGender  )).addOnSuccessListener { newDoc ->
+
+                Toast.makeText(this, "Creado con exito", Toast.LENGTH_SHORT).show()
             }
-                .addOnFailureListener { e ->
-                    Log.d(
-                        "resultado","FRACASO!"
-                    )
+                .addOnFailureListener {
+                    Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
                 }
+
         }
 
     }
