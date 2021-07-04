@@ -7,6 +7,7 @@ import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_raza.*
@@ -20,7 +21,8 @@ class RazaActivity : AppCompatActivity() {
 
     private val tag = "RazaActivity"
     private lateinit var db: FirebaseFirestore
-    private var idRaza: String =""
+    private var idRaza: String = ""
+    private var dogsListener: ListenerRegistration? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,9 +33,26 @@ class RazaActivity : AppCompatActivity() {
         addPerro.setOnClickListener {
             val intent = Intent(this, DogActivity::class.java)
             intent.putExtra("raza", raza)
-            intent.putExtra("idRaza", idRaza);
+            intent.putExtra("idRaza", idRaza)
             startActivity(intent)
         }
+
+        dogsList.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, _, position, _ ->
+                val selectedItemText: Dog = parent.getItemAtPosition(position) as Dog
+                Log.d("click", selectedItemText.name.toString())
+
+                val intent = Intent(this, PerfilDogActivity::class.java)
+                intent.putExtra("nombreDog", selectedItemText.name)
+                intent.putExtra("idPerro", selectedItemText.id)
+                intent.putExtra("idRaza", selectedItemText.idRaza)
+                startActivity(intent)
+            }
+    }
+
+    override fun onDestroy() {
+        dogsListener?.remove()
+        super.onDestroy()
     }
 
     private fun getData(raza: String?) {
@@ -68,37 +87,26 @@ class RazaActivity : AppCompatActivity() {
     }
 
     private fun getDogs(idRaza: String) {
-        db.collection("Perros")
+        dogsListener = db.collection("Perros")
             .whereEqualTo("idRaza", idRaza)
-            //.whereEqualTo("idRefugio", idRefugio)
-            .get()
-            .addOnSuccessListener { documents ->
-                val listDogs: MutableList<Dog> = ArrayList()
+            .orderBy("name")
+            .addSnapshotListener { value, error ->
+                error?.let {
+                    Log.d(tag, "get failed with ${it.message}")
+                    return@addSnapshotListener
+                }
 
-                Log.d(tag, "DocumentSnapshot PERRITOS: ${documents.documents.size}")
-                for (document in documents.documents) {
+                val listDogs: MutableList<Dog> = ArrayList()
+                Log.d(tag, "DocumentSnapshot PERRITOS: ${value?.size()}")
+                for (document in value!!) {
                     val dogObjet = document.toObject(Dog::class.java)
-                    dogObjet?.let {
+                    dogObjet.let {
                         dogObjet.id = document.id
                         listDogs.add(dogObjet)
                     }
                 }
 
                 dogsList.adapter = DogAdapter(context = this, dogs = listDogs)
-                dogsList.onItemClickListener =
-                    AdapterView.OnItemClickListener { parent, view, position, id ->
-                        val selectedItemText : Dog = parent.getItemAtPosition(position) as Dog;
-                        Log.d("click", selectedItemText.name.toString())
-
-                        val intent = Intent(this, PerfilDogActivity::class.java)
-                        intent.putExtra("nombreDog", selectedItemText.name)
-                        intent.putExtra("idPerro", selectedItemText.id);
-                        intent.putExtra("idRaza", selectedItemText.idRaza);
-                        startActivity(intent)
-                    }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(tag, "get failed with ", exception)
             }
     }
 }
