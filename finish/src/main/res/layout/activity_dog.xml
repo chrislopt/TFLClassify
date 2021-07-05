@@ -11,16 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/purple_500"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
         android:paddingStart="15dp"
         android:paddingEnd="15dp">
 
         <ImageView
             android:id="@+id/backButton"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
             android:contentDescription="@string/content_desc"
             android:src="@drawable/ic_arrow_back"
             app:tint="@color/white" />
@@ -28,20 +27,22 @@
         <TextView
             android:id="@+id/titleText"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_marginStart="20dp"
             android:layout_toStartOf="@id/checkButton"
             android:layout_toEndOf="@+id/backButton"
             android:gravity="start|center"
             android:text="@string/add_label"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/checkButton"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
             android:contentDescription="@string/content_desc"
             android:src="@drawable/ic_check"
             app:tint="@color/white" />
@@ -69,14 +70,15 @@
             android:hint="@string/nombre_del_perro"
             android:padding="15dp"
             app:startIconContentDescription="@string/content_desc"
-            app:startIconDrawable="@drawable/ic_footprint_dog">
+            app:startIconDrawable="@drawable/ic_footprint_dog"
+            app:startIconTint="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nombreInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/transparent"
-                android:inputType="text" />
+                android:inputType="textCapSentences" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,7 +91,8 @@
         android:hint="@string/fecha_de_rescate"
         android:padding="15dp"
         app:startIconContentDescription="@string/content_desc"
-        app:startIconDrawable="@drawable/ic_calendar_today">
+        app:startIconDrawable="@drawable/ic_calendar_today"
+        app:startIconTint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/dateInput"
@@ -109,14 +112,15 @@
         android:hint="@string/peso"
         android:padding="15dp"
         app:startIconContentDescription="@string/content_desc"
-        app:startIconDrawable="@drawable/ic_vector_kilogram_weight">
+        app:startIconDrawable="@drawable/ic_vector_kilogram_weight"
+        app:startIconTint="@color/black">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/pesoInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:inputType="datetime" />
+            android:inputType="numberDecimal" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -147,7 +151,8 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:contentDescription="@string/content_desc"
-                android:src="@drawable/ic_dog_nose" />
+                android:src="@drawable/ic_dog_nose"
+                app:tint="@color/black" />
 
             <RadioButton
                 android:id="@+id/maleOption"

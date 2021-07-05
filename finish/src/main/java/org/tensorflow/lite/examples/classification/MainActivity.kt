@@ -37,7 +37,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import org.tensorflow.lite.examples.classification.activities.RazaActivity
-import org.tensorflow.lite.examples.classification.ml.Dogomodel
+import org.tensorflow.lite.examples.classification.ml.DogoModel
 import org.tensorflow.lite.examples.classification.ui.RecognitionAdapter
 import org.tensorflow.lite.examples.classification.util.YuvToRgbConverter
 import org.tensorflow.lite.examples.classification.viewmodel.Recognition
@@ -213,7 +213,7 @@ class MainActivity : AppCompatActivity() {
         // TODO 1: Add class variable TensorFlow Lite Model
         // Initializing the flowerModel by lazy so that it runs in the same thread when the process
         // method is called.
-        private val flowerModel: Dogomodel by lazy {
+        private val dogoModel: DogoModel by lazy {
 
             // TODO 6. Optional GPU acceleration
             val compatList = CompatibilityList()
@@ -227,7 +227,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             // Initialize the Flower Model
-            Dogomodel.newInstance(ctx, options)
+            DogoModel.newInstance(ctx, options)
+
         }
 
         override fun analyze(imageProxy: ImageProxy) {
@@ -238,7 +239,8 @@ class MainActivity : AppCompatActivity() {
             val tfImage = TensorImage.fromBitmap(toBitmap(imageProxy))
 
             // TODO 3: Process the image using the trained model, sort and pick out the top results
-            val outputs = flowerModel.process(tfImage)
+
+            val outputs = dogoModel.process(tfImage)
                 .probabilityAsCategoryList.apply {
                     sortByDescending { it.score } // Sort with highest confidence first
                 }.take(MAX_RESULT_DISPLAY) // take the top results

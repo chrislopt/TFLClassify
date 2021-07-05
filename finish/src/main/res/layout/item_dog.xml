@@ -50,7 +50,7 @@
                 android:id="@+id/weightText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="10dp"
+                android:drawablePadding="5dp"
                 android:gravity="end"
                 app:drawableEndCompat="@drawable/ic_vector_kilogram_weight" />
 
