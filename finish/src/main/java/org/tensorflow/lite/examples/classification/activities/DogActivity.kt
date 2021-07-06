@@ -32,11 +32,14 @@ class DogActivity : AppCompatActivity() {
         val myFormat = "dd/MM/yy"
         sdf = SimpleDateFormat(myFormat, Locale.US)
         initControls(dateInput)
+        myCalendar.set(Calendar.HOUR_OF_DAY, 0)
+        myCalendar.set(Calendar.MINUTE, 0)
+        myCalendar.set(Calendar.SECOND, 0)
         dateInput.setText(sdf.format(myCalendar.time))
 
         backButton.setOnClickListener { finish() }
         checkButton.setOnClickListener {
-            if (ValidadorCampos()) {
+            if (validadorCampos()) {
                 var optionGender = "Macho"
 
                 if (femaleOption.isChecked && !maleOption.isChecked) {
@@ -66,7 +69,7 @@ class DogActivity : AppCompatActivity() {
         }
     }
 
-    private fun ValidadorCampos(): Boolean {
+    private fun validadorCampos(): Boolean {
         return nombreInput.text!!.isNotEmpty() && pesoInput.text!!.isNotEmpty() && dateInput.text!!.isNotEmpty() && (femaleOption.isChecked || maleOption.isChecked)
     }
 
@@ -78,8 +81,8 @@ class DogActivity : AppCompatActivity() {
                 myCalendar.set(Calendar.YEAR, year)
                 myCalendar.set(Calendar.MONTH, monthOfYear)
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                myCalendar.set(Calendar.HOUR_OF_DAY, 23)
-                myCalendar.set(Calendar.MINUTE, 59)
+                myCalendar.set(Calendar.HOUR_OF_DAY, 0)
+                myCalendar.set(Calendar.MINUTE, 0)
                 myCalendar.set(Calendar.SECOND, 0)
                 dateInput.setText(sdf.format(myCalendar.time))
             }
