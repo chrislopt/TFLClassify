@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
@@ -13,14 +14,19 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_dog.*
 import kotlinx.android.synthetic.main.activity_perfil_dog.*
 import kotlinx.android.synthetic.main.activity_perfil_dog.backButton
+import kotlinx.android.synthetic.main.activity_raza.*
 import org.tensorflow.lite.examples.classification.R
 import org.tensorflow.lite.examples.classification.model.Dog
+import org.tensorflow.lite.examples.classification.model.Vacuna
+import org.tensorflow.lite.examples.classification.ui.VacunaAdapter
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -31,6 +37,8 @@ class PerfilDogActivity : AppCompatActivity() {
     private lateinit var db: FirebaseFirestore
     private lateinit var dog: Dog
     lateinit var context: Context
+
+    private var vacunasListener: ListenerRegistration? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,8 +75,14 @@ class PerfilDogActivity : AppCompatActivity() {
         backButton.setOnClickListener { finish() }
 
         addVacuna.setOnClickListener { dialogVacuna() }
+
+        getVacunas()
     }
 
+    override fun onDestroy() {
+        vacunasListener?.remove()
+        super.onDestroy()
+    }
 
     private fun dialogVacuna() {
         val dialogView: View = LayoutInflater.from(context).inflate(R.layout.dialog_vacuna, null)
@@ -119,9 +133,9 @@ class PerfilDogActivity : AppCompatActivity() {
                 }
 
                 val vacuna = hashMapOf(
-                    "name" to nombreInput.text.toString(),
-                    "date" to Timestamp(myCalendar.time),
-                    "by" to responsableInput.text.toString()
+                    "producto" to nombreInput.text.toString(),
+                    "fecha" to Timestamp(myCalendar.time),
+                    "encargado" to responsableInput.text.toString()
                 )
 
                 db.collection("Perros")
@@ -137,5 +151,30 @@ class PerfilDogActivity : AppCompatActivity() {
             }
 
         dialog.show()
+    }
+
+    private fun getVacunas() {
+        vacunasListener = db.collection("Perros")
+            .document(dog.id!!)
+            .collection("vacunas")
+            .orderBy("fecha", Query.Direction.DESCENDING)
+            .addSnapshotListener { value, error ->
+                error?.let {
+                    Log.d("getVacunas", "get failed with ${it.message}")
+                    return@addSnapshotListener
+                }
+
+                val listVacunas: MutableList<Vacuna> = ArrayList()
+                Log.d("getVacunas", "DocumentSnapshot VACUNAS: ${value?.size()}")
+                for (document in value!!) {
+                    val vacunaObj = document.toObject(Vacuna::class.java)
+                    vacunaObj.let {
+                        it.id = document.id
+                        listVacunas.add(vacunaObj)
+                    }
+                }
+
+                vacunasList.adapter = VacunaAdapter(context = this, vacunas = listVacunas)
+            }
     }
 }

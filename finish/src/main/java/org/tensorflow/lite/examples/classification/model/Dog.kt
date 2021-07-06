@@ -9,6 +9,5 @@ data class Dog(
     var name: String? = null,
     var peso: String? = null,
     var sexo: String? = null,
-    var fechaRescate: Timestamp? = null,
-    var vacunas: List<Vacunas>? = null
+    var fechaRescate: Timestamp? = null
 )

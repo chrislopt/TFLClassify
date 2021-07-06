@@ -10,7 +10,6 @@ import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_dog.*
 import org.tensorflow.lite.examples.classification.R
-import org.tensorflow.lite.examples.classification.model.Dog
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -48,21 +47,22 @@ class DogActivity : AppCompatActivity() {
                     optionGender = "Macho"
                 }
 
-                db.collection("Perros").add(
-                    Dog(
-                        idRaza = intent.getStringExtra("idRaza"),
-                        name = nombreInput.text.toString(),
-                        fechaRescate = Timestamp(myCalendar.time),
-                        peso = pesoInput.text.toString(),
-                        sexo = optionGender
-                    )
-                ).addOnSuccessListener {
-                    Toast.makeText(this, "Creado con exito", Toast.LENGTH_SHORT).show()
-                    finish()
-                }.addOnFailureListener {
-                    Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                val doggie = hashMapOf(
+                    "idRaza" to intent.getStringExtra("idRaza"),
+                    "name" to nombreInput.text.toString(),
+                    "fechaRescate" to Timestamp(myCalendar.time),
+                    "peso" to pesoInput.text.toString(),
+                    "sexo" to optionGender
+                )
 
-                }
+                db.collection("Perros")
+                    .add(doggie)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Creado con exito", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }.addOnFailureListener {
+                        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                    }
             } else {
                 Toast.makeText(this, "Campos deben estar llenos", Toast.LENGTH_SHORT).show()
             }
