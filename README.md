@@ -1,44 +1,18 @@
-# Recogonize Flowers with TensorFLow Lite Model Maker and Android Studio ML Model Binding
+# Find Doggie
+## Aplicaciones codigo abierto 2021
 
-This folder contains the code for the TensorFlow Lite codelab:
-
-* [Recognize Flowers with TensorFlow on Android (Beta)](https://goo.gle/3dbCSbt)
-
-## Introduction
-
-This beta codelab introduces the latest tooling using TensorFlow Lite Model Maker and Android Studio 4.1 Beta 1 or above. In addition, it will require access to a physical Android device to test. If you prefer to use the stable version of this codelab, follow this codelab instead.
-
-In these codelabs, you will learn:
-
-*   How to train your own custom image classifier using [TensorFlow Lite Model Maker](https://www.tensorflow.org/lite/tutorials/model_maker_image_classification).
-*   How to use Android Studio to import the TensorFlow Lite model to integrate the custom model in an Android app using CameraX.
-*   How to use GPU on your phone to accelerate your model.
+![findDoggie](https://raw.githubusercontent.com/VladiGH/TFLClassify/master/finish/src/main/res/drawable/find_doggie_logo.png)
 
 
-## Pre-requisites
+Find doggie es una aplicación que su objetivo es que pueda ser utilizada por los encargados de refugios de perros para poder llevar un control de estos, con información referente a su historial médico, perfil y otras características propias de cada uno. 
 
-[Android Studio 4.1 Beta 1 or above](http://developers.android.com/studio/preview)
+## Herramientas utilizadas 
 
-## Getting Started
+- Tensorflow lite 
+Es un framework open source para trabajar con machine learning y en particular TFLITE es la version de tensorflow para dispositivos moviles android e IOS
+licencia:Apache 2.0
 
-Visit the Google codelabs site to follow along the guided steps.
+- Firebase Real time database
+Es una base de datos en la nube que nos permite un acceso seguro a esta desde el cliente, se guarda persistencia de la data de manera local y aun offline
+licencia:Apache 2.0
 
-## Support
-
-- Stack Overflow: https://stackoverflow.com/questions/tagged/tensorflow-lite+android-studio
-
-## License
-
- Copyright (C) 2020 The Android Open Source Project
- 
- Licensed under the Apache License, Version 2.0 (the "License");
- you may not use this file except in compliance with the License.
- You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
- 
- Unless required by applicable law or agreed to in writing, software
- distributed under the License is distributed on an "AS IS" BASIS,
- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- See the License for the specific language governing permissions and
- limitations under the License.
