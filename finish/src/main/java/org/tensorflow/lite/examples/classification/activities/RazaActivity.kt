@@ -10,6 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_raza.*
 import org.tensorflow.lite.examples.classification.R
 import org.tensorflow.lite.examples.classification.model.Dog
@@ -43,9 +44,7 @@ class RazaActivity : AppCompatActivity() {
                 Log.d("click", selectedItemText.name.toString())
 
                 val intent = Intent(this, PerfilDogActivity::class.java)
-                intent.putExtra("nombreDog", selectedItemText.name)
-                intent.putExtra("idPerro", selectedItemText.id)
-                intent.putExtra("idRaza", selectedItemText.idRaza)
+                intent.putExtra("dog", Gson().toJson(selectedItemText))
                 startActivity(intent)
             }
     }

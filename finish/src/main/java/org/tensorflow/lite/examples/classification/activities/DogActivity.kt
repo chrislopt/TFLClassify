@@ -10,7 +10,6 @@ import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_dog.*
 import org.tensorflow.lite.examples.classification.R
-import org.tensorflow.lite.examples.classification.model.Dog
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -32,11 +31,14 @@ class DogActivity : AppCompatActivity() {
         val myFormat = "dd/MM/yy"
         sdf = SimpleDateFormat(myFormat, Locale.US)
         initControls(dateInput)
+        myCalendar.set(Calendar.HOUR_OF_DAY, 0)
+        myCalendar.set(Calendar.MINUTE, 0)
+        myCalendar.set(Calendar.SECOND, 0)
         dateInput.setText(sdf.format(myCalendar.time))
 
         backButton.setOnClickListener { finish() }
         checkButton.setOnClickListener {
-            if (ValidadorCampos()) {
+            if (validadorCampos()) {
                 var optionGender = "Macho"
 
                 if (femaleOption.isChecked && !maleOption.isChecked) {
@@ -45,28 +47,29 @@ class DogActivity : AppCompatActivity() {
                     optionGender = "Macho"
                 }
 
-                db.collection("Perros").add(
-                    Dog(
-                        idRaza = intent.getStringExtra("idRaza"),
-                        name = nombreInput.text.toString(),
-                        fechaRescate = Timestamp(myCalendar.time),
-                        peso = pesoInput.text.toString(),
-                        sexo = optionGender
-                    )
-                ).addOnSuccessListener {
-                    Toast.makeText(this, "Creado con exito", Toast.LENGTH_SHORT).show()
-                    finish()
-                }.addOnFailureListener {
-                    Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                val doggie = hashMapOf(
+                    "idRaza" to intent.getStringExtra("idRaza"),
+                    "name" to nombreInput.text.toString(),
+                    "fechaRescate" to Timestamp(myCalendar.time),
+                    "peso" to pesoInput.text.toString(),
+                    "sexo" to optionGender
+                )
 
-                }
+                db.collection("Perros")
+                    .add(doggie)
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Creado con exito", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }.addOnFailureListener {
+                        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                    }
             } else {
                 Toast.makeText(this, "Campos deben estar llenos", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun ValidadorCampos(): Boolean {
+    private fun validadorCampos(): Boolean {
         return nombreInput.text!!.isNotEmpty() && pesoInput.text!!.isNotEmpty() && dateInput.text!!.isNotEmpty() && (femaleOption.isChecked || maleOption.isChecked)
     }
 
@@ -78,8 +81,8 @@ class DogActivity : AppCompatActivity() {
                 myCalendar.set(Calendar.YEAR, year)
                 myCalendar.set(Calendar.MONTH, monthOfYear)
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                myCalendar.set(Calendar.HOUR_OF_DAY, 23)
-                myCalendar.set(Calendar.MINUTE, 59)
+                myCalendar.set(Calendar.HOUR_OF_DAY, 0)
+                myCalendar.set(Calendar.MINUTE, 0)
                 myCalendar.set(Calendar.SECOND, 0)
                 dateInput.setText(sdf.format(myCalendar.time))
             }

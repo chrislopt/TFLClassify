@@ -26,4 +26,7 @@
     <string name="macho">Macho</string>
     <string name="hembra">Hembra</string>
     <string name="sexo">Sexo</string>
+    <string name="nombre">Nombre</string>
+    <string name="fecha">Fecha</string>
+    <string name="responsable">Responsable</string>
 </resources>
