@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/gray_bar"
     tools:context=".activities.RazaActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200"
+        android:background="@drawable/background_info_spec_dog"
         android:orientation="horizontal"
+        android:layout_marginBottom="5dp"
         android:padding="15dp">
 
         <ImageView
@@ -32,10 +34,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
+                android:textColor="@color/white"
+                android:text="Prueba"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/descText"
+                android:textColor="@color/white"
+                android:text="Prueba"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:justificationMode="inter_word" />

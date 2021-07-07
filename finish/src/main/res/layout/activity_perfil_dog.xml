@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/purple_500"
+        android:background="@color/blue_customize"
         android:paddingStart="15dp"
         android:paddingEnd="15dp">
 
@@ -40,8 +40,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/gray"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/background_info_dog"
         android:baselineAligned="false"
         android:orientation="horizontal"
         android:padding="10dp">
@@ -50,16 +50,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/dogText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:text="Prueba"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/genderText"
+                android:textColor="@color/white"
+                android:text="Prueba"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -69,12 +75,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginBottom="10dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/dateText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Prueba"
+                android:textSize="18sp"
                 android:gravity="end" />
 
             <TextView
@@ -83,6 +93,9 @@
                 android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
                 android:gravity="end"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:text="Prueba"
                 app:drawableEndCompat="@drawable/ic_vector_kilogram_weight" />
 
         </LinearLayout>
@@ -103,6 +116,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
+
         android:contentDescription="@string/content_desc"
         android:src="@drawable/ic_vacuna" />
 

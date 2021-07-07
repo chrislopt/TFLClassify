@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/gray_bar"
     tools:context=".activities.DogActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/purple_500"
+        android:background="@color/blue_customize"
         android:paddingStart="15dp"
         android:paddingEnd="15dp">
 
@@ -52,7 +53,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200"
+        android:background="@drawable/background_info_dog"
         android:orientation="vertical">
 
         <TextView
@@ -60,6 +61,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="65dp"
+            android:text="Prueba"
+            android:textColor="@color/white"
             android:layout_marginTop="20dp"
             android:textSize="16sp" />
 
@@ -69,9 +72,10 @@
             android:layout_height="wrap_content"
             android:hint="@string/nombre_del_perro"
             android:padding="15dp"
+            android:textColorHint="@color/white"
             app:startIconContentDescription="@string/content_desc"
             app:startIconDrawable="@drawable/ic_footprint_dog"
-            app:startIconTint="@color/black">
+            app:startIconTint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nombreInput"

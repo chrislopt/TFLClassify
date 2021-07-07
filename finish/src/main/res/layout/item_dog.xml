@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:baselineAligned="false"
     android:orientation="horizontal"
-    android:padding="10dp">
+    android:padding="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,10 +25,15 @@
                 android:id="@+id/dogText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Prueba"
+                android:textSize="18sp"
+                android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/genderText"
+                android:textSize="16sp"
+                android:text="Prueba"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -42,6 +47,7 @@
 
             <TextView
                 android:id="@+id/dateText"
+                android:textSize="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end" />
@@ -50,6 +56,8 @@
                 android:id="@+id/weightText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="Prueba"
                 android:drawablePadding="5dp"
                 android:gravity="end"
                 app:drawableEndCompat="@drawable/ic_vector_kilogram_weight" />
