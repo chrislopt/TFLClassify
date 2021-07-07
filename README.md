@@ -16,3 +16,5 @@ licencia:Apache 2.0
 Es una base de datos en la nube que nos permite un acceso seguro a esta desde el cliente, se guarda persistencia de la data de manera local y aun offline
 licencia:Apache 2.0
 
+- Base de datos de imagenes que se utlizo para entrenar el modelo de perros fue:
+http://vision.stanford.edu/aditya86/ImageNetDogs/
