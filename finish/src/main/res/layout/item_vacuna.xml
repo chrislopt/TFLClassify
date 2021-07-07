@@ -14,15 +14,20 @@
 
         <TextView
             android:id="@+id/vacunaText"
+            android:text="Prueba"
+            android:textSize="18sp"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/encargadoText"
+            android:text="Prueba"
+            android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/teal_200" />
+            android:textColor="@color/gray_custom" />
 
     </LinearLayout>
 
@@ -32,6 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
+        android:text="Prueba"
+        android:textSize="16sp"
         android:gravity="end" />
 
 </LinearLayout>

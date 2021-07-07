@@ -27,4 +27,7 @@
     <color name="pink">#E91E63</color>
     <color name="blue">#304EF1</color>
     <color name="transparent">#00000000</color>
+    <color name="gray_bar">#EAEAEC</color>
+    <color name="blue_customize">#323a52</color>
+    <color name="gray_custom">#5B5C5E</color>
 </resources>
