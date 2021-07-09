@@ -2,6 +2,8 @@ package org.tensorflow.lite.examples.classification.model
 
 import com.google.firebase.Timestamp
 
+
+
 data class Dog(
     var id: String? = null,
     var idRaza: String? = null,

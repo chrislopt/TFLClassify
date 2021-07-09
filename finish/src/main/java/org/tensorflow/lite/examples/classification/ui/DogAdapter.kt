@@ -12,6 +12,8 @@ import org.tensorflow.lite.examples.classification.model.Dog
 import java.text.SimpleDateFormat
 import java.util.*
 
+//Con esta clase se maneja el adaptador para cada elemento del list view de los perros
+
 class DogAdapter( context: Context, dogs: List<Dog>) : ArrayAdapter<Dog>(context, 0, dogs) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {

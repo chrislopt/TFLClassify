@@ -15,6 +15,7 @@ import org.tensorflow.lite.examples.classification.R
 import org.tensorflow.lite.examples.classification.model.Dog
 import java.util.*
 
+//Primera actividad que se muestra con la actividad de los perros y el boton de escanear
 class EntryActivity : AppCompatActivity() {
 
     private var db: FirebaseFirestore = Firebase.firestore

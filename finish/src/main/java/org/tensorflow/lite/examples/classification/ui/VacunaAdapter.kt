@@ -11,6 +11,10 @@ import org.tensorflow.lite.examples.classification.model.Vacuna
 import java.text.SimpleDateFormat
 import java.util.*
 
+
+
+//Con esta clase se maneja el adaptador para cada elemento del list view de las vacunas
+
 class VacunaAdapter(context: Context, vacunas: List<Vacuna>) :
     ArrayAdapter<Vacuna>(context, 0, vacunas) {
 

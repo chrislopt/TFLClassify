@@ -30,6 +30,7 @@ import org.tensorflow.lite.examples.classification.ui.VacunaAdapter
 import java.text.SimpleDateFormat
 import java.util.*
 
+//Perfil del perro, al cual se le pueden agregar las vacunas
 
 class PerfilDogActivity : AppCompatActivity() {
 

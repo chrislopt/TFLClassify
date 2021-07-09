@@ -13,6 +13,7 @@ import org.tensorflow.lite.examples.classification.R
 import java.text.SimpleDateFormat
 import java.util.*
 
+//Actividad principal cuando se procede a agregar un perro
 class DogActivity : AppCompatActivity() {
 
     private val db = FirebaseFirestore.getInstance()

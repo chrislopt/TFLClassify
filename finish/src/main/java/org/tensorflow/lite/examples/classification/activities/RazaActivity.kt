@@ -18,6 +18,8 @@ import org.tensorflow.lite.examples.classification.model.Raza
 import org.tensorflow.lite.examples.classification.ui.DogAdapter
 import java.util.*
 
+
+//Actividad cuando se escanea un perro y se muestra la descripcion y la lista de los perros pertenecientes a esa raza de perro
 class RazaActivity : AppCompatActivity() {
 
     private val tag = "RazaActivity"
