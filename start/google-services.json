@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "367627063204",
+    "project_id": "tflclassify",
+    "storage_bucket": "tflclassify.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367627063204:android:6b07d99a909723ae9a3b31",
+        "android_client_info": {
+          "package_name": "org.tensorflow.lite.examples.classification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367627063204-nfonednd458bcjvi5bi2ll70am3ck4lk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5O-Zdk2aPqFrj4ibmF6XCIOKrs4FKbZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "367627063204-nfonednd458bcjvi5bi2ll70am3ck4lk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

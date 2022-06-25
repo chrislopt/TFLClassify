@@ -15,7 +15,18 @@
   -->
 
 <resources>
-    <string name="app_name">TFL Classify</string>
+    <string name="app_name">Find Cat</string>
     <string name="permission_deny_text">Required permissions denied. Exiting.</string>
     <string name="tensorflow_lite_logo_description">TensorFlow Lite logo</string>
+    <string name="content_desc">CONTENT DESCRIPTION</string>
+    <string name="add_label">Añadir</string>
+    <string name="nombre_del_perro">Nombre del gato</string>
+    <string name="fecha_de_rescate">Fecha de rescate</string>
+    <string name="peso">Peso</string>
+    <string name="macho">Macho</string>
+    <string name="hembra">Hembra</string>
+    <string name="sexo">Sexo</string>
+    <string name="nombre">Nombre</string>
+    <string name="fecha">Fecha</string>
+    <string name="responsable">Responsable</string>
 </resources>
