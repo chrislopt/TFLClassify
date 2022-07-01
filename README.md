@@ -1,7 +1,7 @@
 # Find Cat
 ## Aplicaciones codigo abierto 2022
 
-![findCat](https://raw.githubusercontent.com/VladiGH/TFLClassify/master/finish/src/main/res/drawable/find_cat_logo.png)
+![findCat](https://raw.githubusercontent.com/chrislopt/TFLClassify/master/start/src/main/res/drawable/find_cat_logo.png)
 
 
 Find Cat es una aplicación que su objetivo es que pueda ser utilizada por los encargados de refugios de gatos para poder llevar un control de estos, con información referente a su historial médico, perfil y otras características propias de cada uno. 
