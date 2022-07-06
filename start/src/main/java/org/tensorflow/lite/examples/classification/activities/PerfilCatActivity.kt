@@ -138,7 +138,7 @@ class PerfilCatActivity : AppCompatActivity() {
 
                 db.collection("Gatos")
                     .document(cat.id!!)
-                    .collection("vacunas")
+                    .collection("vacunasG")
                     .add(vacuna)
                     .addOnSuccessListener {
                         Toast.makeText(this, "Creada con exito", Toast.LENGTH_SHORT).show()
@@ -154,7 +154,7 @@ class PerfilCatActivity : AppCompatActivity() {
     private fun getVacunas() {
         vacunasListener = db.collection("Gatos")
             .document(cat.id!!)
-            .collection("vacunas")
+            .collection("vacunasG")
             .orderBy("fecha", Query.Direction.DESCENDING)
             .addSnapshotListener { value, error ->
                 error?.let {
